@@ -37,4 +37,16 @@ public class Edge {
 			this.endVertice = endVertice;
 		}
 	}
+
+
+	/**
+	 * Instantiate an {@link Edge} that links two {@link Vertice}s
+	 * @param startVertice {@link Vertice} from which the {@link Edge} starts
+	 * @param endVertice {@link Vertice} to which the {@link Edge} goes
+	 * @param weight Weight of the {@link Edge} (travel cost)
+	 */
+	public Edge (Vertice startVertice, Vertice endVertice, int weight) {
+		this(startVertice, endVertice);  // #CodeOptimization
+		this.weight = weight;
+	}
 }
