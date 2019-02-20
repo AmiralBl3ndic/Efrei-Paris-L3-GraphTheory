@@ -22,6 +22,7 @@ class Edge {
 
 	/**
 	 * The {@code weight} of the {@link Edge} (cost)
+	 * After the instance has been instantiated, its {@code weight} cannot be changed
 	 */
 	private int weight = DEFAULT_WEIGHT;
 
