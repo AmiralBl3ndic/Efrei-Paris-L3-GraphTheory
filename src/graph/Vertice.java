@@ -67,4 +67,13 @@ class Vertice {
 	public ArrayList<Edge> getInEdges () {
 		return this.inEdges;
 	}
+
+
+	/**
+	 * Get the {@link Edge}s that are going from the instance to another instance of {@link Vertice}
+	 * @return {@link ArrayList} of {@link Edge}s that points towards other instances and starts from the current instance
+	 */
+	public ArrayList<Edge> getOutEdge () {
+		return this.outEdges;
+	}
 }
