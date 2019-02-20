@@ -76,4 +76,24 @@ class Vertice {
 	public ArrayList<Edge> getOutEdge () {
 		return this.outEdges;
 	}
+
+
+	/**
+	 * Get the {@link ArrayList} of all {@link Edge}s that are related to the current instance
+	 * @return {@link ArrayList} of all {@link Edge}s that are related to the current instance
+	 */
+	public ArrayList<Edge> getEdges () {
+
+		// Initializing a new ArrayList containing all incoming edges
+		ArrayList<Edge> edges = new ArrayList<>(this.inEdges);
+
+		// Ad the remaining outgoing edges (that are not already incoming edges)
+		for (Edge e : this.outEdges) {
+			if (!edges.contains(e)) {  // Checking if the edge is not already in the list of edges
+				edges.add(e);
+			}
+		}
+
+		return edges;
+	}
 }
