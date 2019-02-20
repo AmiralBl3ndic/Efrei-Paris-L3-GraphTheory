@@ -106,13 +106,7 @@ class Vertice {
 		ArrayList<Vertice> successors = new ArrayList<>();
 
 		// Running through the list of all outgoing edges
-		for (Edge e : this.outEdges) {
-			if (!successors.contains(e.getEndVertice())) {
-				successors.add(e.getEndVertice());
-			}
-		}
-
-		return successors;
+		return filterOutEdges(successors);
 	}
 
 
@@ -130,5 +124,32 @@ class Vertice {
 		}
 
 		return predecessors;
+	}
+
+
+	/**
+	 * Get all the {@link Vertice}s linked to the current instance (predecessors or successors)
+	 * @return {@link ArrayList} of {@link Vertice}s that are are linked to the current instance (predecessors or successors)
+	 */
+	public ArrayList<Vertice> getLinkedVertices () {
+		ArrayList<Vertice> linkedVertices = new ArrayList<>(this.getPredecessors());
+
+		return filterOutEdges(linkedVertices);  // Add the successors that are not already predecessors (looping edges)
+	}
+
+
+	/**
+	 * Filter the out edges by adding only the ones that are not already part of the {@code vertices} parameter
+	 * @param vertices {@link ArrayList} to add the {@link Vertice}s to
+	 * @return Updated {@link ArrayList} of {@link Vertice}s
+	 */
+	private ArrayList<Vertice> filterOutEdges(ArrayList<Vertice> vertices) {
+		for (Edge e : this.outEdges) {
+			if (!vertices.contains(e.getEndVertice())) {
+				vertices.add(e.getEndVertice());
+			}
+		}
+
+		return vertices;
 	}
 }
