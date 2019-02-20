@@ -7,12 +7,13 @@ public class Vertice {
 	 */
 	private int id;
 
+	private static int _number_vertices = 0;
+
 
 	/**
-	 * Create a new {@link Vertice} instance with passed id
-	 * @param id ID of the vertice to create
+	 * Create a new {@link Vertice} instance with its {@code id} depending
 	 */
-	public Vertice (int id) {
-		this.id = id;
+	public Vertice () {
+		this.id = _number_vertices++;
 	}
 }
