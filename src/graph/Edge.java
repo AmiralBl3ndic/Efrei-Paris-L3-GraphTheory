@@ -58,4 +58,13 @@ class Edge {
 	public int getWeight () {
 		return this.weight;
 	}
+
+
+	/**
+	 * Getter for the {@code startVertice} property of the instance
+	 * @return {@link Vertice} from which the {@link Edge} starts
+	 */
+	public Vertice getStartVertice () {
+		return this.startVertice;
+	}
 }
