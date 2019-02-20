@@ -16,4 +16,13 @@ class Vertice {
 	public Vertice () {
 		this.id = Vertice._number_vertices++;
 	}
+
+
+	/**
+	 * Reset the class ids.
+	 * Use only when creating a new graph, or at the end of a graph creation.
+	 */
+	static void resetIds () {
+		Vertice._number_vertices = 0;
+	}
 }
