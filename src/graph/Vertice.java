@@ -7,6 +7,9 @@ class Vertice {
 	 */
 	private int id;
 
+	/**
+	 * Count of the number of {@link Vertice}s currently created
+	 */
 	private static int _number_vertices = 0;
 
 
