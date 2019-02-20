@@ -58,4 +58,13 @@ class Vertice {
 	public void addOutEdge (Edge edge) {
 		this.outEdges.add(edge);
 	}
+
+
+	/**
+	 * Get the {@link Edge}s that points towards the instance
+	 * @return {@link ArrayList} of {@link Edge}s that points towards the instance
+	 */
+	public ArrayList<Edge> getInEdges () {
+		return this.inEdges;
+	}
 }
