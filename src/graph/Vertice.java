@@ -49,4 +49,13 @@ class Vertice {
 	public void addInEdge (Edge edge) {
 		this.inEdges.add(edge);
 	}
+
+
+	/**
+	 * Add an outgoing {@link Edge} to the instance
+	 * @param edge Outgoing {@link Edge} to add to the instance
+	 */
+	public void addOutEdge (Edge edge) {
+		this.outEdges.add(edge);
+	}
 }
