@@ -1,5 +1,8 @@
 package graph;
 
+/**
+ * Represents a link between two {@link Vertice}s
+ */
 public class Edge {
 
 	/**
