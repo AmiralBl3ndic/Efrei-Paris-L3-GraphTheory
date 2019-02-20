@@ -14,6 +14,6 @@ class Vertice {
 	 * Create a new {@link Vertice} instance with its {@code id} depending
 	 */
 	public Vertice () {
-		this.id = _number_vertices++;
+		this.id = Vertice._number_vertices++;
 	}
 }
