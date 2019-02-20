@@ -49,4 +49,13 @@ public class Edge {
 		this(startVertice, endVertice);  // #CodeOptimization
 		this.weight = weight;
 	}
+
+
+	/**
+	 * Getter for the {@code weight} property (travel cost) of the instance
+	 * @return Value of the {@code weight} property (travel cost) of the instance
+	 */
+	public int getWeight () {
+		return this.weight;
+	}
 }
