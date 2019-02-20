@@ -26,6 +26,16 @@ class Edge {
 	 */
 	private int weight = DEFAULT_WEIGHT;
 
+	/**
+	 * Counter of instances of edges
+	 */
+	private static int _number_edges = 0;
+
+	/**
+	 * ID of the instance
+	 */
+	private int id;
+
 
 	/**
 	 * Instantiate an {@link Edge} that links two {@link Vertice}s
