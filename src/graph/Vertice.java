@@ -114,4 +114,21 @@ class Vertice {
 
 		return successors;
 	}
+
+
+	/**
+	 * Get the {@link ArrayList} of all predecessor {@link Vertice}s of the current instance
+	 * @return {@link ArrayList} of all predecessor {@link Vertice}s of the current instance
+	 */
+	public ArrayList<Vertice> getPredecessors () {
+		ArrayList<Vertice> predecessors = new ArrayList<>();
+
+		for (Edge e : this.inEdges) {
+			if (!predecessors.contains(e.getStartVertice())) {
+				predecessors.add(e.getStartVertice());
+			}
+		}
+
+		return predecessors;
+	}
 }
