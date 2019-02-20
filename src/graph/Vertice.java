@@ -96,4 +96,22 @@ class Vertice {
 
 		return edges;
 	}
+
+
+	/**
+	 * Get the {@link ArrayList} of all successor {@link Vertice}s of the current instance
+	 * @return {@link ArrayList} of all successor {@link Vertice}s of the current instance
+	 */
+	public ArrayList<Vertice> getSuccessors () {
+		ArrayList<Vertice> successors = new ArrayList<>();
+
+		// Running through the list of all outgoing edges
+		for (Edge e : this.outEdges) {
+			if (!successors.contains(e.getEndVertice())) {
+				successors.add(e.getEndVertice());
+			}
+		}
+
+		return successors;
+	}
 }
