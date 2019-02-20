@@ -20,9 +20,21 @@ public class Edge {
 	 */
 	private Vertice endVertice;
 
-
 	/**
 	 * The {@code weight} of the {@link Edge} (cost)
 	 */
 	private int weight = DEFAULT_WEIGHT;
+
+
+	/**
+	 * Instantiate an {@link Edge} that links two {@link Vertice}s
+	 * @param startVertice {@link Vertice} from which the {@link Edge} starts
+	 * @param endVertice {@link Vertice} to which the {@link Edge} goes
+	 */
+	public Edge (Vertice startVertice, Vertice endVertice) {
+		if (startVertice != null && endVertice != null) {  // Avoid potential later NullPointerException
+			this.startVertice = startVertice;
+			this.endVertice = endVertice;
+		}
+	}
 }
