@@ -86,4 +86,13 @@ class Edge {
 	public Vertice getEndVertice () {
 		return this.endVertice;
 	}
+
+
+	/**
+	 * Get the unique ID of the instance
+	 * @return Value of the {@code id} property of the instance
+	 */
+	public int getId () {
+		return this.id;
+	}
 }
