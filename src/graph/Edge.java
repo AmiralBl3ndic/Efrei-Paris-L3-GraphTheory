@@ -67,4 +67,13 @@ class Edge {
 	public Vertice getStartVertice () {
 		return this.startVertice;
 	}
+
+
+	/**
+	 * Getter for the {@code endVertice} property of the instance
+	 * @return {@link Vertice} to which the {@link Edge} goes
+	 */
+	public Vertice getEndVertice () {
+		return this.endVertice;
+	}
 }
