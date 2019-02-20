@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.ArrayList;
+
 class Vertice {
 
 	/**
@@ -11,6 +13,16 @@ class Vertice {
 	 * Count of the number of {@link Vertice}s currently created
 	 */
 	private static int _number_vertices = 0;
+
+	/**
+	 * List of all edges that points towards the instance (from other instances)
+	 */
+	private ArrayList<Edge> inEdges = new ArrayList<>();
+
+	/**
+	 * List of all edges that point towards other instances (from this instance)
+	 */
+	private ArrayList<Edge> outEdges = new ArrayList<>();
 
 
 	/**
