@@ -43,10 +43,9 @@ class Edge {
 	 * @param endVertice {@link Vertice} to which the {@link Edge} goes
 	 */
 	public Edge (Vertice startVertice, Vertice endVertice) {
-		if (startVertice != null && endVertice != null) {  // Avoid potential later NullPointerException
-			this.startVertice = startVertice;
-			this.endVertice = endVertice;
-		}
+		this.startVertice = startVertice;
+		this.endVertice = endVertice;
+		this.id = _number_edges++;
 	}
 
 
