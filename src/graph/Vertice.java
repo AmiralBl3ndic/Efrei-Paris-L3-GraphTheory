@@ -1,6 +1,6 @@
 package graph;
 
-public class Vertice {
+class Vertice {
 
 	/**
 	 * Id of the vertice
