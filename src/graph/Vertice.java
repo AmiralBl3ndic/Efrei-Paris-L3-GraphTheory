@@ -40,4 +40,13 @@ class Vertice {
 	static void resetIds () {
 		Vertice._number_vertices = 0;
 	}
+
+
+	/**
+	 * Add an incoming {@link Edge} to the instance
+	 * @param edge Incoming {@link Edge} to add to the instance
+	 */
+	public void addInEdge (Edge edge) {
+		this.inEdges.add(edge);
+	}
 }
