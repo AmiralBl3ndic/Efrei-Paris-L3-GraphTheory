@@ -3,7 +3,7 @@ package graph;
 /**
  * Represents a link between two {@link Vertice}s
  */
-public class Edge {
+class Edge {
 
 	/**
 	 * Default weight for the {@link Edge}
