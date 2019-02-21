@@ -152,4 +152,20 @@ class Vertice {
 
 		return vertices;
 	}
+
+
+	/**
+	 * Check if the current instance has another {@link Vertice} as a predecessor
+	 * @param predecessor Vertice to check (as a predecessor)
+	 * @return Whether or not the current instance has {@code predecessor} as a predecessor
+	 */
+	public boolean hasPredecessor (Vertice predecessor) {
+		for (Edge e : this.inEdges) {
+			if (e.getStartVertice().equals(predecessor)) {
+				return true;
+			}
+		}
+
+		return false;  // Default is false
+	}
 }
