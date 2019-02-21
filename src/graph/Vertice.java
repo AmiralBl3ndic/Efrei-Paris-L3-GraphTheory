@@ -184,4 +184,14 @@ class Vertice {
 
 		return false;  // Default is false
 	}
+
+
+	/**
+	 * Check whether or not the current instance is linked (successor or predecessor) to the {@link Vertice} passed as parameter
+	 * @param vertice Vertice to check links for
+	 * @return Whether or not the passed {@link Vertice} is linked to the current instance
+	 */
+	public boolean isLinked (Vertice vertice) {
+		return this.hasPredecessor(vertice) || this.hasSuccessor(vertice);
+	}
 }
