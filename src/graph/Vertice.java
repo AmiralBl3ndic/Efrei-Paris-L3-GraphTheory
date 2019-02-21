@@ -168,4 +168,20 @@ class Vertice {
 
 		return false;  // Default is false
 	}
+
+
+	/**
+	 * Check if the current instance has another {@link Vertice} as a successor
+	 * @param successor Vertice to check (as a successor)
+	 * @return Whether or not the current instance has {@code successor} as a successor
+	 */
+	public boolean hasSuccessor (Vertice successor) {
+		for (Edge e : this.outEdges) {
+			if (e.getEndVertice().equals(successor)) {  // Check if the passed Vertice is among the successors of the instance
+				return true;
+			}
+		}
+
+		return false;  // Default is false
+	}
 }
