@@ -36,6 +36,9 @@ public final class Graph {
 	 * @throws InvalidGraphFileException If the passed file can not be used for instantiating a new {@link Graph}
 	 */
 	public Graph (String filePath) throws FileNotFoundException, InvalidGraphFileException {
+		// Resetting the IDs of the Vertices
+		Vertice.resetIds();  // Hence avoiding collision
+
 		Scanner sc = new Scanner(new FileReader(filePath));  // Scanner on the file, throw a FileNotFound exception if needed
 
 		this.filePath = filePath;  // Saving the path
@@ -45,6 +48,11 @@ public final class Graph {
 		this.numberVertices = GraphBuilder.readNumberVertices(sc);
 
 		this.vertices = new ArrayList<>(this.numberVertices);
+
+		// Going through all edges described by the file and adding them to the new instance
+		while (sc.hasNextLine()) {
+			this.addEdge(sc);
+		}
 	}
 
 
