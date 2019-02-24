@@ -47,4 +47,33 @@ public final class Graph {
 		this.vertices = new ArrayList<>(this.numberVertices);
 	}
 
+
+	/**
+	 * Add an edge to the graph, based on the {@link Scanner} on the building file
+	 * @param sc {@link Scanner} on the building file
+	 * @throws InvalidGraphFileException If a line does not have the right format
+	 */
+	private void addEdge (Scanner sc) throws InvalidGraphFileException {
+		Scanner sc2 = new Scanner(sc.nextLine());  // Creating a new Scanner based on the line to parse
+
+		try {
+			int from = sc2.nextInt();  // Reading the start vertex of the Edge
+			int weight = sc2.nextInt();  // Reading the weight of the Edge
+			int to = sc2.nextInt();  // Reading the end vertex of the Edge
+
+			// Securing inputs
+			if (from < 0 || from >= this.numberVertices || to < 0 || to >= this.numberVertices) {
+				throw new InvalidGraphFileException("A line describing an Edge is faulty (wrong parameters): unable to build a Graph based on that file");
+			}
+
+			// If no error has been thrown here, we can add the Edge to the graph
+			Edge edge = new Edge(this.vertices.get(from), this.vertices.get(to), weight);  // Actually creating the Edge to add
+			this.vertices.get(from).addOutEdge(edge);
+			this.vertices.get(to).addInEdge(edge);
+
+		} catch (NoSuchElementException e) {
+			throw new InvalidGraphFileException("A line describing an Edge is faulty (wrong structure): unable to build a Graph based on that file");
+		}
+	}
+
 }
