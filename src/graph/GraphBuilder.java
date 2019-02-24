@@ -31,11 +31,12 @@ final class GraphBuilder {
 				throw new InvalidGraphFileException("A graph must contain at least " + MINIMUM_NUMBER_OF_VERTICES + " vertices, but this file specifies " + numberOfVertices);
 			}
 
+			sc.nextLine();  // Escaping the end line character
+
 			return numberOfVertices;  // Now safe to return
 
 		} else {  // Throw an InvalidGraphFileException if not able to read
 			throw new InvalidGraphFileException("Cannot read number of vertices from the passed file");
 		}
 	}
-
 }
