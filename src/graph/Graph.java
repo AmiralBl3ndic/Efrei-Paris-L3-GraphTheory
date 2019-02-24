@@ -47,7 +47,11 @@ public final class Graph {
 		// Attempt to read the first line (number of vertices in the graph)
 		this.numberVertices = GraphBuilder.readNumberVertices(sc);
 
-		this.vertices = new ArrayList<>(this.numberVertices);
+		this.vertices = new ArrayList<>();
+		for (int i = 0; i < this.numberVertices; i++) {
+			this.vertices.add(new Vertice());
+		}
+
 
 		// Going through all edges described by the file and adding them to the new instance
 		while (sc.hasNextLine()) {
