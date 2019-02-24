@@ -3,6 +3,8 @@ package graph;
 import graph.exceptions.InvalidGraphFileException;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.io.FileReader;
 
@@ -18,7 +20,7 @@ public final class Graph {
 	/**
 	 * Array of {@link Vertice}s that the graph contains
 	 */
-	private Vertice[] vertices;
+	private ArrayList<Vertice> vertices;
 
 
 	/**
@@ -42,6 +44,7 @@ public final class Graph {
 		// Attempt to read the first line (number of vertices in the graph)
 		this.numberVertices = GraphBuilder.readNumberVertices(sc);
 
+		this.vertices = new ArrayList<>(this.numberVertices);
 	}
 
 }
