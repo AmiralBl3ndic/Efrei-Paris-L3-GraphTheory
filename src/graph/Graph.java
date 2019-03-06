@@ -88,4 +88,47 @@ public final class Graph {
 		}
 	}
 
+
+	/**
+	 * Display the adjacency matrix of the current graph
+	 */
+	public void displayAdjacencyMatrix () {
+
+		System.out.println("=== ADJACENCY MATRIX ===\n");
+
+		// First, we display the top line of the table
+		System.out.print("   ║");
+		for (int i = 0; i < this.vertices.size(); i++) {
+			System.out.print(String.format(" %d ║", i));
+		}
+		System.out.print("\n");
+
+		// Then we display a separator line
+		for (int i = -2; i < (this.vertices.size()/10) + 1; i++) {
+			System.out.print("═");
+		}
+		System.out.print("║");
+		for (int i = 0; i < this.vertices.size(); i++) {
+			System.out.print("═");
+			for (int j = 0; j < (""+i).length(); j++) {
+				System.out.print("═");
+			}
+			System.out.print("═║");
+		}
+		System.out.print("\n");
+
+		// Now, we check adjacency for each vertex
+		for (Vertice v : this.vertices) {
+			// Print the ID of the current vertice
+			System.out.print(String.format(" %d ║", v.getId()));
+
+			// Check the successors of the current vertice
+			for (int i = 0; i < this.vertices.size(); i++) {
+				String link = v.hasSuccessor(this.vertices.get(i)) ? " 1 " : "   ";
+				System.out.print(link + "║");
+			}
+
+			System.out.print("\n");
+		}
+	}
 }
