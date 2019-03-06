@@ -43,6 +43,14 @@ class Vertice {
 
 
 	/**
+	 * Get the id of the current instance
+	 */
+	int getId () {
+		return this.id;
+	}
+
+
+	/**
 	 * Add an incoming {@link Edge} to the instance
 	 * @param edge Incoming {@link Edge} to add to the instance
 	 */
