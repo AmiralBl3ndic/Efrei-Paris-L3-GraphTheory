@@ -4,7 +4,9 @@ package graph.exceptions;
  * Exception to throw if a file is illegal in the given context
  */
 public class IllegalFileException extends Exception {
-	public IllegalFileException (String message) {
+	private static final long serialVersionUID = 1L;
+
+	public IllegalFileException(String message) {
 		super(message);
 	}
 }
