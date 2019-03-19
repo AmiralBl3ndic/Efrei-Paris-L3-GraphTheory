@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"graph","l":"Edge"},{"p":"graph","l":"Graph"},{"p":"graph.exceptions","l":"InvalidVerticeIdException"},{"p":"graph","l":"Vertice"}]
