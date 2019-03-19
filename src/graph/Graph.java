@@ -117,8 +117,8 @@ public final class Graph {
 			System.out.print(String.format(" %d ║", v.getId()));
 
 			// Check the successors of the current vertice
-			for (int i = 0; i < this.vertices.size(); i++) {
-				String link = v.hasSuccessor(this.vertices.get(i)) ? " 1 " : "   ";
+			for (Vertex vertex : this.vertices) {
+				String link = v.hasSuccessor(vertex) ? " 1 " : "   ";
 				System.out.print(link + "║");
 			}
 
@@ -161,9 +161,9 @@ public final class Graph {
 			ret.append(String.format(" %d ║", v.getId()));
 
 			// Check the successors of the current vertice
-			for (int i = 0; i < this.vertices.size(); i++) {
-				String link = v.hasSuccessor(this.vertices.get(i)) ? " 1 " : "   ";
-				ret.append(link + "║");
+			for (Vertex vertex : this.vertices) {
+				String link = v.hasSuccessor(vertex) ? " 1 " : "   ";
+				ret.append(link).append("║");
 			}
 
 			ret.append("\n");
