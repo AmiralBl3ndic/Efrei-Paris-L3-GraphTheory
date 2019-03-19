@@ -122,7 +122,7 @@ class Vertex {
 	 * Get the {@link ArrayList} of all predecessor vertices of the current instance
 	 * @return {@link ArrayList} of all predecessor vertices of the current instance
 	 */
-	ArrayList<Vertex> getPredecessors () {
+	private ArrayList<Vertex> getPredecessors() {
 		ArrayList<Vertex> predecessors = new ArrayList<>();
 
 		for (Edge e : this.inEdges) {
@@ -167,7 +167,7 @@ class Vertex {
 	 * @param predecessor Vertex to check (as a predecessor)
 	 * @return Whether or not the current instance has {@code predecessor} as a predecessor
 	 */
-	boolean hasPredecessor (Vertex predecessor) {
+	private boolean hasPredecessor(Vertex predecessor) {
 		for (Edge e : this.inEdges) {
 			if (e.getStartVertex().equals(predecessor)) {
 				return true;

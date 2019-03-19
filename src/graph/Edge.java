@@ -42,7 +42,7 @@ class Edge {
 	 * @param startVertex {@link Vertex} from which the {@link Edge} starts
 	 * @param endVertex {@link Vertex} to which the {@link Edge} goes
 	 */
-	public Edge (Vertex startVertex, Vertex endVertex) {
+	private Edge(Vertex startVertex, Vertex endVertex) {
 		this.startVertex = startVertex;
 		this.endVertex = endVertex;
 		this.id = _number_edges++;
@@ -55,7 +55,7 @@ class Edge {
 	 * @param endVertex {@link Vertex} to which the {@link Edge} goes
 	 * @param weight Weight of the {@link Edge} (travel cost)
 	 */
-	public Edge (Vertex startVertex, Vertex endVertex, int weight) {
+	Edge(Vertex startVertex, Vertex endVertex, int weight) {
 		this(startVertex, endVertex);  // #CodeOptimization
 		this.weight = weight;
 	}
@@ -65,7 +65,7 @@ class Edge {
 	 * Getter for the {@code weight} property (travel cost) of the instance
 	 * @return Value of the {@code weight} property (travel cost) of the instance
 	 */
-	public int getWeight () {
+	int getWeight() {
 		return this.weight;
 	}
 
@@ -74,7 +74,7 @@ class Edge {
 	 * Getter for the {@code startVertice} property of the instance
 	 * @return {@link Vertex} from which the {@link Edge} starts
 	 */
-	public Vertex getStartVertex () {
+	Vertex getStartVertex() {
 		return this.startVertex;
 	}
 
@@ -83,7 +83,7 @@ class Edge {
 	 * Getter for the {@code endVertice} property of the instance
 	 * @return {@link Vertex} to which the {@link Edge} goes
 	 */
-	public Vertex getEndVertex () {
+	Vertex getEndVertex() {
 		return this.endVertex;
 	}
 
@@ -92,7 +92,7 @@ class Edge {
 	 * Get the unique ID of the instance
 	 * @return Value of the {@code id} property of the instance
 	 */
-	public int getId () {
+	int getId () {
 		return this.id;
 	}
 }
