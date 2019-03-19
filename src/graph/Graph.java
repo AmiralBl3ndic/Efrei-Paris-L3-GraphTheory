@@ -173,6 +173,21 @@ public final class Graph {
 	}
 
 
+	/**
+	 * Check if the instance contains a {@link Edge} with a negative weight
+	 * @return Whether or not the instance contains a {@link Edge} with a negative weight
+	 */
+	private boolean hasNegativeEdge () {
+		// Check for all vertices of the graph
+		for (Vertex v : this.vertices) {
+			if (v.hasNegativeLink()) {
+				return true;  // If the current Vertex contains an Edge with a negative weight
+			}
+		}
+
+		return false;  // If none
+	}
+
 
 	/**
 	 * Read the first line of the passed file, check the value and act consequently
