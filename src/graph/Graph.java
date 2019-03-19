@@ -190,6 +190,51 @@ public final class Graph {
 
 
 	/**
+	 * Check whether or not the instance contains an absorbent cycle
+	 * @return Whether or not the instance contains an absorbent cycle
+	 */
+	public boolean hasAbsorbentCycle () {
+		for (Vertex v : this.vertices) {
+			if (hasAbsorbentCycle(v, v,0, 0, new ArrayList<>())) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+	/**
+	 * Recursive method that checks whether or not there is an absorbent cycle starting from the given Vertex
+	 * @param start Reference to the {@link Vertex} at the start of the potential cycle
+	 * @param current Reference to the {@link Vertex} currently being analyzed
+	 * @param cycleWeight Weight of the potential cycle being analyzed
+	 * @param depth Number of iterations (call with {@code 0} to start)
+	 * @param cleared {@link ArrayList} of {@link Vertex} acting as cache for already checked vertices
+	 * @return Whether or not the {@code start} {@link Vertex} is the start of an absorbent cycle
+	 */
+	private boolean hasAbsorbentCycle (Vertex start, Vertex current, int cycleWeight, int depth, ArrayList<Vertex> cleared) {
+		// If we looped back to the start, check the cycle weight
+		if (current == start && depth != 0) {
+			return cycleWeight < 0;
+		}
+
+		// Recursive call for each outgoing Edge of the current Vertex
+		for (Edge e : current.getOutEdge()) {
+			if (!cleared.contains(e.getEndVertex()) && hasAbsorbentCycle(start, e.getEndVertex(), cycleWeight + e.getWeight(), depth++, cleared)) {
+				return true;
+			}
+		}
+
+		// Add the current Vertex to the cache (already checked vertices)
+		cleared.add(current);
+
+		// By default, there is no absorbent cycle
+		return false;
+	}
+
+
+	/**
 	 * Read the first line of the passed file, check the value and act consequently
 	 * @param sc {@link Scanner} on the file to be read
 	 * @return Number of vertices in the graph according to the file
