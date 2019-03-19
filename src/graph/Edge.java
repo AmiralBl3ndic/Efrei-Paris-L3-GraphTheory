@@ -1,24 +1,24 @@
 package graph;
 
 /**
- * Represents a link between two {@link Vertice}s
+ * Represents a link between two vertices
  */
 class Edge {
 
 	/**
 	 * Default weight for the {@link Edge}
 	 */
-	public final static int DEFAULT_WEIGHT = 1;
+	private final static int DEFAULT_WEIGHT = 1;
 
 	/**
-	 * The {@link Vertice} from which the {@link Edge} starts
+	 * The {@link Vertex} from which the {@link Edge} starts
 	 */
-	private Vertice startVertice;
+	private Vertex startVertex;
 
 	/**
-	 * The {@link Vertice} to which the {@link Edge} goes
+	 * The {@link Vertex} to which the {@link Edge} goes
 	 */
-	private Vertice endVertice;
+	private Vertex endVertex;
 
 	/**
 	 * The {@code weight} of the {@link Edge} (cost)
@@ -38,25 +38,25 @@ class Edge {
 
 
 	/**
-	 * Instantiate an {@link Edge} that links two {@link Vertice}s
-	 * @param startVertice {@link Vertice} from which the {@link Edge} starts
-	 * @param endVertice {@link Vertice} to which the {@link Edge} goes
+	 * Instantiate an {@link Edge} that links two vertices
+	 * @param startVertex {@link Vertex} from which the {@link Edge} starts
+	 * @param endVertex {@link Vertex} to which the {@link Edge} goes
 	 */
-	public Edge (Vertice startVertice, Vertice endVertice) {
-		this.startVertice = startVertice;
-		this.endVertice = endVertice;
+	public Edge (Vertex startVertex, Vertex endVertex) {
+		this.startVertex = startVertex;
+		this.endVertex = endVertex;
 		this.id = _number_edges++;
 	}
 
 
 	/**
-	 * Instantiate an {@link Edge} that links two {@link Vertice}s
-	 * @param startVertice {@link Vertice} from which the {@link Edge} starts
-	 * @param endVertice {@link Vertice} to which the {@link Edge} goes
+	 * Instantiate an {@link Edge} that links two vertices
+	 * @param startVertex {@link Vertex} from which the {@link Edge} starts
+	 * @param endVertex {@link Vertex} to which the {@link Edge} goes
 	 * @param weight Weight of the {@link Edge} (travel cost)
 	 */
-	public Edge (Vertice startVertice, Vertice endVertice, int weight) {
-		this(startVertice, endVertice);  // #CodeOptimization
+	public Edge (Vertex startVertex, Vertex endVertex, int weight) {
+		this(startVertex, endVertex);  // #CodeOptimization
 		this.weight = weight;
 	}
 
@@ -72,19 +72,19 @@ class Edge {
 
 	/**
 	 * Getter for the {@code startVertice} property of the instance
-	 * @return {@link Vertice} from which the {@link Edge} starts
+	 * @return {@link Vertex} from which the {@link Edge} starts
 	 */
-	public Vertice getStartVertice () {
-		return this.startVertice;
+	public Vertex getStartVertex () {
+		return this.startVertex;
 	}
 
 
 	/**
 	 * Getter for the {@code endVertice} property of the instance
-	 * @return {@link Vertice} to which the {@link Edge} goes
+	 * @return {@link Vertex} to which the {@link Edge} goes
 	 */
-	public Vertice getEndVertice () {
-		return this.endVertice;
+	public Vertex getEndVertex () {
+		return this.endVertex;
 	}
 
 

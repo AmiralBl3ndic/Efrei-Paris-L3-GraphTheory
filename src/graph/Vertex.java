@@ -2,7 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 
-class Vertice {
+class Vertex {
 
 	/**
 	 * Id of the vertice
@@ -10,7 +10,7 @@ class Vertice {
 	private int id;
 
 	/**
-	 * Count of the number of {@link Vertice}s currently created
+	 * Count of the number of vertices currently created
 	 */
 	private static int _number_vertices = 0;
 
@@ -26,10 +26,10 @@ class Vertice {
 
 
 	/**
-	 * Create a new {@link Vertice} instance with its {@code id} depending
+	 * Create a new {@link Vertex} instance with its {@code id} depending
 	 */
-	public Vertice () {
-		this.id = Vertice._number_vertices++;
+	Vertex () {
+		this.id = Vertex._number_vertices++;
 	}
 
 
@@ -38,7 +38,7 @@ class Vertice {
 	 * Use only when creating a new graph, or at the end of a graph creation.
 	 */
 	static void resetIds () {
-		Vertice._number_vertices = 0;
+		Vertex._number_vertices = 0;
 	}
 
 
@@ -54,7 +54,7 @@ class Vertice {
 	 * Add an incoming {@link Edge} to the instance
 	 * @param edge Incoming {@link Edge} to add to the instance
 	 */
-	public void addInEdge (Edge edge) {
+	void addInEdge (Edge edge) {
 		this.inEdges.add(edge);
 	}
 
@@ -63,7 +63,7 @@ class Vertice {
 	 * Add an outgoing {@link Edge} to the instance
 	 * @param edge Outgoing {@link Edge} to add to the instance
 	 */
-	public void addOutEdge (Edge edge) {
+	void addOutEdge (Edge edge) {
 		this.outEdges.add(edge);
 	}
 
@@ -72,16 +72,16 @@ class Vertice {
 	 * Get the {@link Edge}s that points towards the instance
 	 * @return {@link ArrayList} of {@link Edge}s that points towards the instance
 	 */
-	public ArrayList<Edge> getInEdges () {
+	ArrayList<Edge> getInEdges () {
 		return this.inEdges;
 	}
 
 
 	/**
-	 * Get the {@link Edge}s that are going from the instance to another instance of {@link Vertice}
+	 * Get the {@link Edge}s that are going from the instance to another instance of {@link Vertex}
 	 * @return {@link ArrayList} of {@link Edge}s that points towards other instances and starts from the current instance
 	 */
-	public ArrayList<Edge> getOutEdge () {
+	ArrayList<Edge> getOutEdge () {
 		return this.outEdges;
 	}
 
@@ -90,7 +90,7 @@ class Vertice {
 	 * Get the {@link ArrayList} of all {@link Edge}s that are related to the current instance
 	 * @return {@link ArrayList} of all {@link Edge}s that are related to the current instance
 	 */
-	public ArrayList<Edge> getEdges () {
+	ArrayList<Edge> getEdges () {
 
 		// Initializing a new ArrayList containing all incoming edges
 		ArrayList<Edge> edges = new ArrayList<>(this.inEdges);
@@ -107,11 +107,11 @@ class Vertice {
 
 
 	/**
-	 * Get the {@link ArrayList} of all successor {@link Vertice}s of the current instance
-	 * @return {@link ArrayList} of all successor {@link Vertice}s of the current instance
+	 * Get the {@link ArrayList} of all successor vertices of the current instance
+	 * @return {@link ArrayList} of all successor vertices of the current instance
 	 */
-	public ArrayList<Vertice> getSuccessors () {
-		ArrayList<Vertice> successors = new ArrayList<>();
+	ArrayList<Vertex> getSuccessors () {
+		ArrayList<Vertex> successors = new ArrayList<>();
 
 		// Running through the list of all outgoing edges
 		return filterOutEdges(successors);
@@ -119,15 +119,15 @@ class Vertice {
 
 
 	/**
-	 * Get the {@link ArrayList} of all predecessor {@link Vertice}s of the current instance
-	 * @return {@link ArrayList} of all predecessor {@link Vertice}s of the current instance
+	 * Get the {@link ArrayList} of all predecessor vertices of the current instance
+	 * @return {@link ArrayList} of all predecessor vertices of the current instance
 	 */
-	public ArrayList<Vertice> getPredecessors () {
-		ArrayList<Vertice> predecessors = new ArrayList<>();
+	ArrayList<Vertex> getPredecessors () {
+		ArrayList<Vertex> predecessors = new ArrayList<>();
 
 		for (Edge e : this.inEdges) {
-			if (!predecessors.contains(e.getStartVertice())) {
-				predecessors.add(e.getStartVertice());
+			if (!predecessors.contains(e.getStartVertex())) {
+				predecessors.add(e.getStartVertex());
 			}
 		}
 
@@ -136,11 +136,11 @@ class Vertice {
 
 
 	/**
-	 * Get all the {@link Vertice}s linked to the current instance (predecessors or successors)
-	 * @return {@link ArrayList} of {@link Vertice}s that are are linked to the current instance (predecessors or successors)
+	 * Get all the vertices linked to the current instance (predecessors or successors)
+	 * @return {@link ArrayList} of {@link Vertex} that are are linked to the current instance (predecessors or successors)
 	 */
-	public ArrayList<Vertice> getLinkedVertices () {
-		ArrayList<Vertice> linkedVertices = new ArrayList<>(this.getPredecessors());
+	ArrayList<Vertex> getLinkedVertices () {
+		ArrayList<Vertex> linkedVertices = new ArrayList<>(this.getPredecessors());
 
 		return filterOutEdges(linkedVertices);  // Add the successors that are not already predecessors (looping edges)
 	}
@@ -148,13 +148,13 @@ class Vertice {
 
 	/**
 	 * Filter the out edges by adding only the ones that are not already part of the {@code vertices} parameter
-	 * @param vertices {@link ArrayList} to add the {@link Vertice}s to
-	 * @return Updated {@link ArrayList} of {@link Vertice}s
+	 * @param vertices {@link ArrayList} to add the vertices to
+	 * @return Updated {@link ArrayList} of {@link Vertex}
 	 */
-	private ArrayList<Vertice> filterOutEdges(ArrayList<Vertice> vertices) {
+	private ArrayList<Vertex> filterOutEdges(ArrayList<Vertex> vertices) {
 		for (Edge e : this.outEdges) {
-			if (!vertices.contains(e.getEndVertice())) {
-				vertices.add(e.getEndVertice());
+			if (!vertices.contains(e.getEndVertex())) {
+				vertices.add(e.getEndVertex());
 			}
 		}
 
@@ -163,13 +163,13 @@ class Vertice {
 
 
 	/**
-	 * Check if the current instance has another {@link Vertice} as a predecessor
-	 * @param predecessor Vertice to check (as a predecessor)
+	 * Check if the current instance has another {@link Vertex} as a predecessor
+	 * @param predecessor Vertex to check (as a predecessor)
 	 * @return Whether or not the current instance has {@code predecessor} as a predecessor
 	 */
-	public boolean hasPredecessor (Vertice predecessor) {
+	boolean hasPredecessor (Vertex predecessor) {
 		for (Edge e : this.inEdges) {
-			if (e.getStartVertice().equals(predecessor)) {
+			if (e.getStartVertex().equals(predecessor)) {
 				return true;
 			}
 		}
@@ -179,13 +179,13 @@ class Vertice {
 
 
 	/**
-	 * Check if the current instance has another {@link Vertice} as a successor
-	 * @param successor Vertice to check (as a successor)
+	 * Check if the current instance has another {@link Vertex} as a successor
+	 * @param successor Vertex to check (as a successor)
 	 * @return Whether or not the current instance has {@code successor} as a successor
 	 */
-	public boolean hasSuccessor (Vertice successor) {
+	boolean hasSuccessor (Vertex successor) {
 		for (Edge e : this.outEdges) {
-			if (e.getEndVertice().equals(successor)) {  // Check if the passed Vertice is among the successors of the instance
+			if (e.getEndVertex().equals(successor)) {  // Check if the passed Vertex is among the successors of the instance
 				return true;
 			}
 		}
@@ -195,11 +195,11 @@ class Vertice {
 
 
 	/**
-	 * Check whether or not the current instance is linked (successor or predecessor) to the {@link Vertice} passed as parameter
-	 * @param vertice Vertice to check links for
-	 * @return Whether or not the passed {@link Vertice} is linked to the current instance
+	 * Check whether or not the current instance is linked (successor or predecessor) to the {@link Vertex} passed as parameter
+	 * @param vertex Vertex to check links for
+	 * @return Whether or not the passed {@link Vertex} is linked to the current instance
 	 */
-	public boolean isLinked (Vertice vertice) {
-		return this.hasPredecessor(vertice) || this.hasSuccessor(vertice);
+	boolean isLinked (Vertex vertex) {
+		return this.hasPredecessor(vertex) || this.hasSuccessor(vertex);
 	}
 }

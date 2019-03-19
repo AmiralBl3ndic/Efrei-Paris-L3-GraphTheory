@@ -12,15 +12,15 @@ import java.io.FileReader;
 public final class Graph {
 
 	/**
-	 * Number of {@link Vertice}s that the graph contains
+	 * Number of vertices that the graph contains
 	 */
 	private int numberVertices;
 
 
 	/**
-	 * Array of {@link Vertice}s that the graph contains
+	 * Array of vertices that the graph contains
 	 */
-	private ArrayList<Vertice> vertices;
+	private ArrayList<Vertex> vertices;
 
 
 
@@ -32,7 +32,7 @@ public final class Graph {
 	 */
 	public Graph (String filePath) throws FileNotFoundException, InvalidGraphFileException {
 		// Resetting the IDs of the Vertices
-		Vertice.resetIds();  // Hence avoiding collision
+		Vertex.resetIds();  // Hence avoiding collision
 
 		Scanner sc = new Scanner(new FileReader(filePath));  // Scanner on the file, throw a FileNotFound exception if needed
 
@@ -42,7 +42,7 @@ public final class Graph {
 
 		this.vertices = new ArrayList<>();
 		for (int i = 0; i < this.numberVertices; i++) {
-			this.vertices.add(new Vertice());
+			this.vertices.add(new Vertex());
 		}
 
 
@@ -61,9 +61,8 @@ public final class Graph {
 	 * @throws InvalidGraphFileException If a line does not have the right format
 	 */
 	private void addEdge (Scanner sc) throws InvalidGraphFileException {
-		Scanner sc2 = new Scanner(sc.nextLine());  // Creating a new Scanner based on the line to parse
-
-		try {
+		// Creating a new Scanner based on the line to parse
+		try (Scanner sc2 = new Scanner(sc.nextLine())) {
 			int from = sc2.nextInt();  // Reading the start vertex of the Edge
 			int weight = sc2.nextInt();  // Reading the weight of the Edge
 			int to = sc2.nextInt();  // Reading the end vertex of the Edge
@@ -80,8 +79,6 @@ public final class Graph {
 
 		} catch (NoSuchElementException e) {
 			throw new InvalidGraphFileException("A line describing an Edge is faulty (wrong structure): unable to build a Graph based on that file");
-		} finally {
-			sc2.close();
 		}
 	}
 
@@ -115,7 +112,7 @@ public final class Graph {
 		System.out.print("\n");
 
 		// Now, we check adjacency for each vertex
-		for (Vertice v : this.vertices) {
+		for (Vertex v : this.vertices) {
 			// Print the ID of the current vertice
 			System.out.print(String.format(" %d ║", v.getId()));
 
@@ -159,7 +156,7 @@ public final class Graph {
 		ret.append("\n");
 
 		// Now, we check adjacency for each vertex
-		for (Vertice v : this.vertices) {
+		for (Vertex v : this.vertices) {
 			// Print the ID of the current vertice
 			ret.append(String.format(" %d ║", v.getId()));
 

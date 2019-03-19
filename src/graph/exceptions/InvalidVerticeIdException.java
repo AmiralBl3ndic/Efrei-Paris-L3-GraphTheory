@@ -11,6 +11,6 @@ public class InvalidVerticeIdException extends Exception {
 	 * @param value   Value that caused the Exception to be thrown
 	 */
 	public InvalidVerticeIdException (String message, int value) {
-		super(String.format("Invalid vertice id: a vertice cannot have this value (%d)", value));
+		super(String.format("Invalid Vertex id: a Vertex cannot have this value (%d)", value));
 	}
 }
