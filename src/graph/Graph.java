@@ -23,11 +23,6 @@ public final class Graph {
 	private ArrayList<Vertice> vertices;
 
 
-	/**
-	 * Path to the file upon which the graph is built
-	 */
-	private final String filePath;
-
 
 	/**
 	 * Create a graph based on its structure (contained in a text file)
@@ -40,8 +35,6 @@ public final class Graph {
 		Vertice.resetIds();  // Hence avoiding collision
 
 		Scanner sc = new Scanner(new FileReader(filePath));  // Scanner on the file, throw a FileNotFound exception if needed
-
-		this.filePath = filePath;  // Saving the path
 
 
 		// Attempt to read the first line (number of vertices in the graph)
@@ -57,6 +50,8 @@ public final class Graph {
 		while (sc.hasNextLine()) {
 			this.addEdge(sc);
 		}
+
+		sc.close();
 	}
 
 
@@ -85,6 +80,8 @@ public final class Graph {
 
 		} catch (NoSuchElementException e) {
 			throw new InvalidGraphFileException("A line describing an Edge is faulty (wrong structure): unable to build a Graph based on that file");
+		} finally {
+			sc2.close();
 		}
 	}
 
