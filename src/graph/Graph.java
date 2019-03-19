@@ -131,6 +131,53 @@ public final class Graph {
 
 
 	/**
+	 * Get a {@link String} representation of the instance of the {@link Graph}
+	 */
+	@Override
+	public String toString () {
+		StringBuilder ret = new StringBuilder();
+
+		// First, we display the top line of the table
+		ret.append("   ║");
+		for (int i = 0; i < this.vertices.size(); i++) {
+			ret.append(String.format(" %d ║", i));
+		}
+		ret.append("\n");
+
+		// Then we display a separator line
+		for (int i = -2; i < (this.vertices.size()/10) + 1; i++) {
+			ret.append("═");
+		}
+		ret.append("║");
+		for (int i = 0; i < this.vertices.size(); i++) {
+			ret.append("═");
+			for (int j = 0; j < (""+i).length(); j++) {
+				ret.append("═");
+			}
+			ret.append("═║");
+		}
+		ret.append("\n");
+
+		// Now, we check adjacency for each vertex
+		for (Vertice v : this.vertices) {
+			// Print the ID of the current vertice
+			ret.append(String.format(" %d ║", v.getId()));
+
+			// Check the successors of the current vertice
+			for (int i = 0; i < this.vertices.size(); i++) {
+				String link = v.hasSuccessor(this.vertices.get(i)) ? " 1 " : "   ";
+				ret.append(link + "║");
+			}
+
+			ret.append("\n");
+		}
+
+		return ret.toString();
+	}
+
+
+
+	/**
 	 * Read the first line of the passed file, check the value and act consequently
 	 * @param sc {@link Scanner} on the file to be read
 	 * @return Number of vertices in the graph according to the file
