@@ -202,4 +202,27 @@ class Vertex {
 	boolean isLinked (Vertex vertex) {
 		return this.hasPredecessor(vertex) || this.hasSuccessor(vertex);
 	}
+
+
+	/**
+	 * Check whether or not the instance has an Edge with a negative weight
+	 * @return Whether or not the instance has an Edge with a negative weight
+	 */
+	boolean hasNegativeLink () {
+		//  Check for incoming Edges
+		for (Edge e : this.inEdges) {
+			if (e.getWeight() < 0) {
+				return true;
+			}
+		}
+
+		// Check for outgoing Edges
+		for (Edge e : this.outEdges) {
+			if (e.getWeight() < 0) {
+				return true;
+			}
+		}
+
+		return false;  // At this point, we are sure there are none
+	}
 }
