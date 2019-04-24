@@ -134,6 +134,8 @@ public final class Graph {
 	public String toString () {
 		StringBuilder ret = new StringBuilder();
 
+		ret.append("Adjacency matrix: \n");
+
 		// First, we display the top line of the table
 		ret.append("   ║");
 		for (int i = 0; i < this.vertices.size(); i++) {
