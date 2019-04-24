@@ -221,7 +221,7 @@ public final class Graph {
 			return cycleWeight < 0;
 		}
 
-		// Recursive call for each outgoing Edge of the current Vertex
+		// Recursive call for each outgoing Edge of the current Vertex (optimized with caching)
 		for (Edge e : current.getOutEdge()) {
 			if (!cleared.contains(e.getEndVertex()) && hasAbsorbentCycle(start, e.getEndVertex(), cycleWeight + e.getWeight(), depth++, cleared)) {
 				return true;
