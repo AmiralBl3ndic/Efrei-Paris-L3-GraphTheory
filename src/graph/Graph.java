@@ -309,6 +309,7 @@ public final class Graph {
 		paths.get(startVertex).add(startVertex);
 
 		ArrayList<Vertex> modified = new ArrayList<>();
+		modified.add(startVertex);
 
 		for (int i = 0; i < MAX_ITERATIONS; i++) { // Loop at most n-1 times, then check for absorbent loops
 			ArrayList<Vertex> modifiedLast = new ArrayList<>(modified);
@@ -349,7 +350,7 @@ public final class Graph {
 						distances.replace(successor, newDistance);
 						
 						// Set path to Vertex
-						paths.replace(successor, new ArrayList<>(paths.get(v)));
+						paths.put(successor, new ArrayList<>(paths.get(v)));
 						paths.get(successor).add(successor);
 
 						// Add Vertex to currently modified vertices
@@ -365,7 +366,8 @@ public final class Graph {
 				if (distances.get(v) == Double.POSITIVE_INFINITY) {
 					System.out.printf("+inf. | ");
 				} else {
-					System.out.printf("%.0f  | ", distances.get(v));
+					Vertex reachingVertex = paths.get(v).size() <= 1 ? v : paths.get(v).get(paths.get(v).size() - 2);
+					System.out.printf("%.0f(%d)  | ", distances.get(v), reachingVertex.getId());
 				}
 			}
 			System.out.println("");  // Linebreak
