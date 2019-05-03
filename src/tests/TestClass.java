@@ -13,6 +13,8 @@ public class TestClass {
 
 			System.out.println(myGraph);
 
+			myGraph.applyBellmanFord(myGraph.getVertex(0));
+
 
 		} catch (FileNotFoundException | InvalidGraphFileException e) {
 			e.printStackTrace();
