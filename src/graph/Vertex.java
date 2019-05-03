@@ -2,6 +2,8 @@ package graph;
 
 import java.util.ArrayList;
 
+import graph.exceptions.NotLinkedException;
+
 class Vertex {
 
 	/**
@@ -232,9 +234,7 @@ class Vertex {
 	 * @param successor Successor {@link Vertex} to find the weight for
 	 * @return Weight to the passed in successor {@link Vertex}
 	 */
-	int getWeightTo(Vertex successor) {
-		final int NOT_LINKED = 0;
-
+	int getWeightTo(Vertex successor) throws NotLinkedException {
 		// Explore all outgoing edges
 		for (Edge e : this.outEdges) {
 			// If the good edge has been found
@@ -243,6 +243,6 @@ class Vertex {
 			}
 		}
 
-		return NOT_LINKED;  // Default return value (0)
+		throw new NotLinkedException("Vertex " + this.id + " is not directly linked to vertex " + successor.getId());
 	}
 }
