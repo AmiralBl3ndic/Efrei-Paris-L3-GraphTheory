@@ -225,4 +225,24 @@ class Vertex {
 
 		return false;  // At this point, we are sure there are none
 	}
+
+
+	/**
+	 * Get the weight of the {@link Edge} to the passed {@link Vertex} (only if linked and outgoing)
+	 * @param successor Successor {@link Vertex} to find the weight for
+	 * @return Weight to the passed in successor {@link Vertex}
+	 */
+	int getWeightTo(Vertex successor) {
+		final int NOT_LINKED = 0;
+
+		// Explore all outgoing edges
+		for (Edge e : this.outEdges) {
+			// If the good edge has been found
+			if (e.getEndVertex() == successor) {
+				return e.getWeight();
+			}
+		}
+
+		return NOT_LINKED;  // Default return value (0)
+	}
 }
