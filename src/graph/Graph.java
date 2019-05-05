@@ -204,7 +204,7 @@ public final class Graph {
 	 * @return Whether or not the instance contains a {@link Edge} with a negative
 	 *         weight
 	 */
-		boolean hasNegativeEdge() {
+	public boolean hasNegativeEdge() {
 		// Check for all vertices of the graph
 		for (Vertex v : this.vertices) {
 			if (v.hasNegativeLink()) {
@@ -404,6 +404,11 @@ public final class Graph {
 	 */
 	public boolean applyDijkstra(int vertexId) {
 
+		if (this.hasNegativeEdge()) {
+			System.out.println("You cannot perform Dijkstra's algorithm on this graph as it contains a negative weighted edge");
+			return false;
+		}
+
 		if (vertexId < 0 || vertexId >= this.vertices.size()) {
 			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
 			return false;  // Error
@@ -418,7 +423,7 @@ public final class Graph {
 	 * Apply the Dijkstra algorithm to find the shortest path from a {@link Vertex} to all accessible others
 	 * @param sourceVertex Reference to the {@link Vertex} to use as the source Vertex
 	 */
-	public void applyDijkstra(Vertex sourceVertex) {
+	private void applyDijkstra(Vertex sourceVertex) {
 		// Creating and initializing the distances to each node from the source
 		Map<Vertex, Double> distances = new HashMap<>();
 		for (Vertex v : this.vertices) {
@@ -429,7 +434,7 @@ public final class Graph {
 		ArrayList<Vertex> visitedVertices = new ArrayList<>();
 		visitedVertices.add(sourceVertex);
 
-		System.out.println("Performing Dijkstra's algorithm using vertex #" + sourceVertex.getId() + " as the source");
+		displayDijkstraStatusFirstLine(sourceVertex);
 
 		// Exploring all vertices that can be visited
 		for (int i = 0; i < visitedVertices.size(); i++) {
@@ -468,17 +473,37 @@ public final class Graph {
 	 * @param visitedVertices List of visited vertices
 	 */
 	private void displayDijkstraStatusLine(Map<Vertex, Double> distances, ArrayList<Vertex> visitedVertices) {
-			System.out.print("|");
-			for (Vertex v : this.vertices) {
-				if (distances.get(v) == Double.POSITIVE_INFINITY) {
-					System.out.print("  +inf.  |");
-				} else {
-					System.out.printf(" %7.0f |", distances.get(v));
-				}
+		System.out.print("|");
+		for (Vertex v : this.vertices) {
+			if (distances.get(v) == Double.POSITIVE_INFINITY) {
+				System.out.print("  +inf.  |");
+			} else {
+				System.out.printf(" %7.0f |", distances.get(v));
 			}
-			for (Vertex visited : visitedVertices) {
-				System.out.printf("  %d ", visited.getId());
-			}
-			System.out.println();
+		}
+		for (Vertex visited : visitedVertices) {
+			System.out.printf(" %d ", visited.getId());
+		}
+		System.out.println();
+	}
+
+
+	/**
+	 * Display the first line of the Dijkstra status table (for code refactoring)
+	 * @param sourceVertex {@link Vertex} to use as the source for Dijkstra's algorithm
+	 */
+	private void displayDijkstraStatusFirstLine(Vertex sourceVertex) {
+		System.out.println("Performing Dijkstra's algorithm using vertex #" + sourceVertex.getId() + " as the source");
+
+		System.out.print("|");
+		for (Vertex v : this.vertices) {
+			System.out.printf(" %7d |", v.getId());
+		}
+		System.out.println(" CC ");
+
+		for (int i = 0; i < this.vertices.size() * 10 + 4; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
 	}
 }
