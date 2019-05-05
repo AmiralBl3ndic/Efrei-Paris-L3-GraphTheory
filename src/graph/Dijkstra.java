@@ -18,7 +18,7 @@ public class Dijkstra {
         this.g = g;
         DistanceFromS = 0;
 
-        if (g.hasNegativeEdge)
+        if (g.hasNegativeEdge())
             System.out.println("We can't compute the Dijkstra's algorithm if there are negative edge !");
         else {
             int sizeG = g.numberVertices;
