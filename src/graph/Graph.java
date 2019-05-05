@@ -245,8 +245,7 @@ public final class Graph {
 	 * @return Whether or not the {@code start} {@link Vertex} is the start of an
 	 *         absorbent cycle
 	 */
-	private boolean hasAbsorbentCycle(Vertex start, Vertex current, int cycleWeight, int depth,
-			ArrayList<Vertex> cleared) {
+	private boolean hasAbsorbentCycle(Vertex start, Vertex current, int cycleWeight, int depth,	ArrayList<Vertex> cleared) {
 		// If we looped back to the start, check the cycle weight
 		if (current == start && depth != 0) {
 			return cycleWeight < 0;
@@ -307,7 +306,7 @@ public final class Graph {
 		if (vertexId < 0 || vertexId >= this.vertices.size()) {
 			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
 		} else {
-
+			applyBellmanFord(this.getVertex(vertexId));
 		}
 	}
 
