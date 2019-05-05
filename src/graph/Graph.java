@@ -186,7 +186,7 @@ public final class Graph {
 				String link = null;
 				try {
 					link = v.hasSuccessor(vertex) ? String.format(" %4d ", v.getWeightTo(vertex)) : "      ";
-				} catch (NotLinkedException e) {}
+				} catch (NotLinkedException ignored) {}
 				ret.append(link).append("║");
 			}
 
@@ -298,6 +298,18 @@ public final class Graph {
 		}
 	}
 
+
+	/**
+	 * Apply the Bellman-Ford algorithm to the graph using the passed the {@link Vertex} with the passed {@code id} ({@code vertexId})
+	 * @param vertexId Id of the {@link Vertex} to use as the source
+	 */
+	public void applyBellmanFord(int vertexId) {
+		if (vertexId < 0 || vertexId >= this.vertices.size()) {
+			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
+		} else {
+
+		}
+	}
 
 	/**
 	 * Apply the Bellman-Ford algorithm to the graph, starting with a passed in
