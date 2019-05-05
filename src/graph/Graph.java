@@ -92,17 +92,6 @@ public final class Graph {
 	}
 
 
-	Vertex getVertex (int vertexID) {
-		for (Vertex v : this.vertices) {
-			if (v.getId() == vertexID) {
-				return v;
-			}
-		}
-
-		return null;
-	}
-
-
 	/**
 	 * Get a reference to a {@link Vertex} by its ID
 	 * @param vertexID ID of the {@link Vertex} to get the reference to
