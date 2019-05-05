@@ -213,7 +213,7 @@ public final class Graph {
 	 * @return Whether or not the instance contains a {@link Edge} with a negative
 	 *         weight
 	 */
-	private boolean hasNegativeEdge() {
+		boolean hasNegativeEdge() {
 		// Check for all vertices of the graph
 		for (Vertex v : this.vertices) {
 			if (v.hasNegativeLink()) {

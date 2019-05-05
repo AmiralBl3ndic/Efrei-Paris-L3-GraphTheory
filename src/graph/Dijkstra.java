@@ -14,12 +14,17 @@ public class Dijkstra {
 
     }
 
-    Dijkstra(Graph g) {
+
+	/**
+	 * Constructor
+	 * @param g
+	 */
+	Dijkstra(Graph g) {
         this.g = g;
         this.DistanceFromS = 0;
 
         if (g.hasNegativeEdge())
-            System.out.println("We can't compute the Dijkstra's algorithm if there are negative edge !");
+            System.out.println("We can't compute the Dijkstra's algorithm if there is negative edge !");
         else {
             int sizeG = g.getNbVertices();
             boolean[] vVisited = new boolean[sizeG];
@@ -27,6 +32,7 @@ public class Dijkstra {
             computeShortestDistances(vVisited);
         }
     }
+
 
     public int DistanceFromSource(ArrayList<Edge> inEdges, int choice) {
         if (choice == -1) { //Initialization
@@ -111,8 +117,9 @@ public class Dijkstra {
                 Vertice verticeEnStart = eNow.getStartVertex();
                 Vertice verticeEnEnd = eNow.getEndVertex();
 
-                if (verticeEnStart.getId == nextVertex) {
-                    int neighbourIndex = verticeEnStart.getId;
+                int neighbourIndex;
+                if (verticeEnStart.getId == nextVertex || verticeStart.getId() == nextVertex) {
+                    neighbourIndex = verticeEnStart.getId;
                 } else if (verticeEnStart.getId == nextVertex) {
                     int neighbourIndex = verticeEnStart.getId;
                 }
