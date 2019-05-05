@@ -160,34 +160,33 @@ public final class Graph {
 		StringBuilder ret = new StringBuilder();
 
 		// First, we display the top line of the table
-		ret.append("   ║");
+		ret.append("     ║");
 		for (int i = 0; i < this.vertices.size(); i++) {
-			ret.append(String.format(" %d ║", i));
+			ret.append(String.format(" %4d ║", i));
 		}
 		ret.append("\n");
 
 		// Then we display a separator line
-		for (int i = -2; i < (this.vertices.size() / 10) + 1; i++) {
+		for (int i = -2; i < (this.vertices.size() / 10) + 3; i++) {
 			ret.append("═");
 		}
 		ret.append("║");
 		for (int i = 0; i < this.vertices.size(); i++) {
-			ret.append("═");
-			for (int j = 0; j < ("" + i).length(); j++) {
-				ret.append("═");
-			}
-			ret.append("═║");
+			ret.append("══════║");
 		}
 		ret.append("\n");
 
 		// Now, we check adjacency for each vertex
 		for (Vertex v : this.vertices) {
 			// Print the ID of the current vertice
-			ret.append(String.format(" %d ║", v.getId()));
+			ret.append(String.format(" %3d ║", v.getId()));
 
 			// Check the successors of the current vertice
 			for (Vertex vertex : this.vertices) {
-				String link = v.hasSuccessor(vertex) ? " 1 " : "   ";
+				String link = null;
+				try {
+					link = v.hasSuccessor(vertex) ? String.format(" %4d ", v.getWeightTo(vertex)) : "      ";
+				} catch (NotLinkedException e) {}
 				ret.append(link).append("║");
 			}
 
