@@ -9,7 +9,7 @@ public class TestClass {
 
 	public static void main(String[] args) {
 		try {
-			Graph myGraph = new Graph("test-graphs/valid-1.txt");
+			Graph myGraph = new Graph("test-graphs/L3Int-4-2.txt");
 
 			System.out.println(myGraph);
 
