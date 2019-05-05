@@ -402,20 +402,22 @@ public final class Graph {
 	 * Apply the Dijkstra algorithm to find the shortest path from a {@link Vertex} to all accessible others
 	 * @param vertexId Id of the {@link Vertex} to use as the source Vertex
 	 */
-	public boolean applyDijkstra(int vertexId) {
+	public void applyDijkstra(int vertexId) {
+		boolean perform = true;
 
 		if (this.hasNegativeEdge()) {
 			System.out.println("You cannot perform Dijkstra's algorithm on this graph as it contains a negative weighted edge");
-			return false;
+			perform = false;
 		}
 
 		if (vertexId < 0 || vertexId >= this.vertices.size()) {
 			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
-			return false;  // Error
+			perform = false;
 		}
 
-		applyDijkstra(this.vertices.get(vertexId));
-		return true;
+		if (perform) {
+			applyDijkstra(this.vertices.get(vertexId));
+		}
 	}
 
 
