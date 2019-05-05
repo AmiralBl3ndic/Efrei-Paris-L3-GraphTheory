@@ -303,10 +303,10 @@ public final class Graph {
 		final double NULL_DISTANCE = 0.0; // #NoMagicNumbers
 		final int MAX_ITERATIONS = this.vertices.size() - 1;
 
-		Map<Vertex, ArrayList<Vertex>> paths = new HashMap<Vertex, ArrayList<Vertex>>();
+		Map<Vertex, ArrayList<Vertex>> paths = new HashMap<>();
 
 		// Initialize distances to all vertices to infinity (positive infinity)
-		Map<Vertex, Double> distances = new HashMap<Vertex, Double>();
+		Map<Vertex, Double> distances = new HashMap<>();
 		for (Vertex v : this.vertices) {
 			distances.put(v, Double.POSITIVE_INFINITY);
 		}
@@ -328,7 +328,7 @@ public final class Graph {
 				for (Vertex successor : v.getSuccessors()) {
 
 					// Get the distance to successor by pathing through v
-					double newDistance = distances.get(v);
+					double newDistance;
 
 					try {
 						newDistance = distances.get(v) + v.getWeightTo(successor);
@@ -372,13 +372,13 @@ public final class Graph {
 			System.out.printf("%d) |  ", i+1);
 			for (Vertex v : this.vertices) {
 				if (distances.get(v) == Double.POSITIVE_INFINITY) {
-					System.out.printf("+inf. | ");
+					System.out.print("+inf. | ");
 				} else {
 					Vertex reachingVertex = paths.get(v).size() <= 1 ? v : paths.get(v).get(paths.get(v).size() - 2);
 					System.out.printf("%.0f(%d)  | ", distances.get(v), reachingVertex.getId());
 				}
 			}
-			System.out.println("");  // Linebreak
+			System.out.println();  // Linebreak
 		}
 
 
