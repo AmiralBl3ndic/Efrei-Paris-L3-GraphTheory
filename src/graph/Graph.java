@@ -57,6 +57,10 @@ public final class Graph {
 		return numberVertices;
 	}
 
+	public ArrayList<Vertex> getVertices() {
+		return vertices;
+	}
+
 	/**
 	 * Add an edge to the graph, based on the {@link Scanner} on the building file
 	 * 
@@ -85,6 +89,17 @@ public final class Graph {
 			throw new InvalidGraphFileException(
 					"A line describing an Edge is faulty (wrong structure): unable to build a Graph based on that file");
 		}
+	}
+
+
+	Vertex getVertex (int vertexID) {
+		for (Vertex v : this.vertices) {
+			if (v.getId() == vertexID) {
+				return v;
+			}
+		}
+
+		return null;
 	}
 
 

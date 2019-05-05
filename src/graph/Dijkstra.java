@@ -53,7 +53,7 @@ public class Dijkstra {
 
     public void computeShortestDistances(boolean[] vVisted) {
         int nextVertex = 0;
-        v = g.vertices;
+        v = g.getVertices;
         Vertex v0 = v.get(0);
         ArrayList<Edge> inEdges = v[0].getInEdges;
 
