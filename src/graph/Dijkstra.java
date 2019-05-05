@@ -6,7 +6,7 @@ public class Dijkstra {
 
     private Graph g;
     private ArrayList<Vertex> v;
-    private ArrayList<int> Distance;
+    private ArrayList<Integer> Distance;
     private int DistanceFromS;
     private ArrayList<Edge> currentVerticeEdges;
     
@@ -16,13 +16,13 @@ public class Dijkstra {
 
     Dijkstra(Graph g) {
         this.g = g;
-        DistanceFromS = 0;
+        this.DistanceFromS = 0;
 
         if (g.hasNegativeEdge())
             System.out.println("We can't compute the Dijkstra's algorithm if there are negative edge !");
         else {
             int sizeG = g.getNbVertices();
-            boolean vVisited[sizeG] = new boolean[];
+            boolean[] vVisited = new boolean[sizeG];
             Arrays.fill(vVisited, false);
             computeShortestDistances(vVisited);
         }
