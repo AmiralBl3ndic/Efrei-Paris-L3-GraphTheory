@@ -31,7 +31,7 @@ public class Dijkstra {
     public int DistanceFromSource(ArrayList<Edge> inEdges, int choice) {
         if (choice == -1) { //Initialization
             for (Edge e1 : inEdges) {
-                Vertex sV = e1.startVertex;
+                Vertex sV = e1.getStartVertex();
                 weightFromId = sV.id;
                 if (sV.id == 0) {
                     DistanceFromS += weightFromId;
@@ -41,7 +41,7 @@ public class Dijkstra {
             }
         }else {
             e2 = inEdges.get(choice);
-            vertexE = e2.startVertex;
+            vertexE = e2.getStartVertex();
             weightFromVE = vertexE.id;
             if (sV.id == choice) {
                 DistanceFromS += weightFromId;
@@ -67,10 +67,12 @@ public class Dijkstra {
             for (int joinedEdge = 0; joinedEdge < currentVerticeEdges.size(); joinedEdge++) {
                 Edge eNow = currentVerticeEdges.get(joinedEdge);
                 Edge eNext = currentVerticeEdges.get(nextVertex);
+                Vertice verticeEnStart = eNow.getStartVertex();
+                Vertice verticeEnEnd = eNow.getEndVertex();
 
-                if (eNow.startVertex == nextVertex) {
+                if (verticeEnStart.getId == nextVertex) {
                     int neighbourIndex = eNow.endVertex;
-                } else if (eNow.endVertex == nextVertex) {
+                } else if (verticeEnStart.getId == nextVertex) {
                     int neighbourIndex = eNow.startVertex;
                 }
 
