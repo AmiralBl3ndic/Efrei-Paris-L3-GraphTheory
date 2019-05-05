@@ -38,24 +38,25 @@ public class Dijkstra {
         if (choice == -1) { //Initialization
             for (Edge e1 : inEdges) {
                 Vertex sV = e1.getStartVertex();
-                weightFromId = sV.id;
-                if (sV.id == 0) {
-                    DistanceFromS += weightFromId;
-                    Distance[0] = DistanceFromS;
+                int weightFromId = sV.getId();
+                if (sV.getId() == 0) {
+                    this.DistanceFromS += weightFromId;  // x + 0 = x
+                    this.Distance.set(0, this.DistanceFromS);
                     break;
                 }
             }
         }else {
-            e2 = inEdges.get(choice);
-            vertexE = e2.getStartVertex();
-            weightFromVE = vertexE.id;
-            if (sV.id == choice) {
-                DistanceFromS += weightFromId;
-                Distance[choice] = DistanceFromS;
+            Edge e2 = inEdges.get(choice);
+            Vertex vertexE = e2.getStartVertex();
+            int weightFromVE = vertexE.getId();
+            if (vertexE.getId() == choice) {
+                this.DistanceFromS += weightFromVE;
+                this.Distance.set(choice, this.DistanceFromS);
             }
         }
         return DistanceFromS;
     }
+
 
     public void computeShortestDistances(boolean[] vVisted) {
         int nextVertex = 0;
