@@ -71,9 +71,9 @@ public class Dijkstra {
                 Vertice verticeEnEnd = eNow.getEndVertex();
 
                 if (verticeEnStart.getId == nextVertex) {
-                    int neighbourIndex = eNow.endVertex;
+                    int neighbourIndex = verticeEnStart.getId;
                 } else if (verticeEnStart.getId == nextVertex) {
-                    int neighbourIndex = eNow.startVertex;
+                    int neighbourIndex = verticeEnStart.getId;
                 }
 
                 // only if not visited
@@ -108,11 +108,13 @@ public class Dijkstra {
             for (int joinedEdge = 0; joinedEdge < currentVerticeEdges.size(); joinedEdge++) {
                 Edge eNow = edgeCurrSucc.get(joinedEdge);
                 Edge eNext = edgeCurrSucc.get(nextVertex);
+                Vertice verticeEnStart = eNow.getStartVertex();
+                Vertice verticeEnEnd = eNow.getEndVertex();
 
-                if (eNow.startVertex == nextVertex) {
-                    int neighbourIndex = eNow.endVertex;
-                } else if (eNow.endVertex == nextVertex) {
-                    int neighbourIndex = eNow.startVertex;
+                if (verticeEnStart.getId == nextVertex) {
+                    int neighbourIndex = verticeEnStart.getId;
+                } else if (verticeEnStart.getId == nextVertex) {
+                    int neighbourIndex = verticeEnStart.getId;
                 }
 
                 int currentDist = DistanceFromSource(edgeCurrSucc, i);
