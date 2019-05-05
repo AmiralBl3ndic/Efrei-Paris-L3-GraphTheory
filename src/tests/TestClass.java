@@ -15,6 +15,7 @@ public class TestClass {
 
 			myGraph.applyBellmanFord(myGraph.getVertex(0));
 
+			myGraph.applyDijkstra(0);
 
 		} catch (FileNotFoundException | InvalidGraphFileException e) {
 			e.printStackTrace();
