@@ -3,11 +3,7 @@ package graph;
 import graph.exceptions.*;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 import java.io.FileReader;
 
 public final class Graph {
@@ -21,6 +17,7 @@ public final class Graph {
 	 * Array of vertices that the graph contains
 	 */
 	private ArrayList<Vertex> vertices;
+
 
 	/**
 	 * Create a graph based on its structure (contained in a text file)
@@ -53,13 +50,16 @@ public final class Graph {
 		sc.close();
 	}
 
+
 	public int getNbVertices() {
 		return numberVertices;
 	}
 
+
 	public ArrayList<Vertex> getVertices() {
 		return vertices;
 	}
+
 
 	/**
 	 * Add an edge to the graph, based on the {@link Scanner} on the building file
@@ -151,6 +151,7 @@ public final class Graph {
 		}
 	}
 
+
 	/**
 	 * Get a {@link String} representation of the instance of the {@link Graph}
 	 */
@@ -196,6 +197,7 @@ public final class Graph {
 		return ret.toString();
 	}
 
+
 	/**
 	 * Check if the instance contains a {@link Edge} with a negative weight
 	 * 
@@ -213,6 +215,7 @@ public final class Graph {
 		return false; // If none
 	}
 
+
 	/**
 	 * Check whether or not the instance contains an absorbent cycle
 	 * 
@@ -227,6 +230,7 @@ public final class Graph {
 
 		return false;
 	}
+
 
 	/**
 	 * Recursive method that checks whether or not there is an absorbent cycle
@@ -263,6 +267,7 @@ public final class Graph {
 		// By default, there is no absorbent cycle
 		return false;
 	}
+
 
 	/**
 	 * Read the first line of the passed file, check the value and act consequently
@@ -383,5 +388,65 @@ public final class Graph {
 
 
 		return distances;
+	}
+
+
+	/**
+	 * Apply the Dijkstra algorithm to find the shortest path from a {@link Vertex} to all accessible others
+	 * @param vertexId Id of the {@link Vertex} to use as the source Vertex
+	 */
+	public boolean applyDijkstra(int vertexId) {
+
+		if (vertexId < 0 || vertexId >= this.vertices.size()) {
+			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
+			return false;  // Error
+		}
+
+		applyDijkstra(this.vertices.get(vertexId));
+		return true;
+	}
+
+
+	/**
+	 * Apply the Dijkstra algorithm to find the shortest path from a {@link Vertex} to all accessible others
+	 * @param sourceVertex Reference to the {@link Vertex} to use as the source Vertex
+	 */
+	public void applyDijkstra(Vertex sourceVertex) {
+		// Creating and initializing the distances to each node from the source
+		Map<Vertex, Double> distances = new HashMap<>();
+		for (Vertex v : this.vertices) {
+			distances.put(v, v == sourceVertex ? 0 : Double.POSITIVE_INFINITY);  // Distance = 0 if source vertex, positive infinity otherwise
+		}
+
+		// Visited vertices (so that they are not checked again), initialized with only the source vertex
+		ArrayList<Vertex> visitedVertices = new ArrayList<>();
+		visitedVertices.add(sourceVertex);
+
+		// Exploring all vertices that can be visited
+		for (int i = 0; i < visitedVertices.size(); i++) {
+			Vertex currentVertex = visitedVertices.get(i);
+
+			// Exploring all successors of the current vertex
+			for (Vertex v : currentVertex.getSuccessors()) {
+				// Gather the weight of the edge linking both vertices
+				double edgeWeight;
+				try {
+					edgeWeight = currentVertex.getWeightTo(v);
+				} catch (NotLinkedException e) {
+					System.err.println("An error occurred while performing Dijkstra's algorithm");
+					continue;  // So that we do not use a falsy value for the weight of the edge (we just do not consider it)
+				}
+
+				// Update distance if needed
+				if (distances.get(currentVertex) + edgeWeight < distances.get(v)) {
+					distances.replace(v, distances.get(currentVertex) + edgeWeight);
+				}
+
+				// Adding the Vertex to the visited vertices only if it is not already in (to avoid infinite loops)
+				if (!visitedVertices.contains(v)) {
+					visitedVertices.add(v);
+				}
+			}
+		}
 	}
 }
