@@ -422,6 +422,8 @@ public final class Graph {
 		ArrayList<Vertex> visitedVertices = new ArrayList<>();
 		visitedVertices.add(sourceVertex);
 
+		System.out.println("Performing Dijkstra's algorithm using vertex #" + sourceVertex.getId() + " as the source");
+
 		// Exploring all vertices that can be visited
 		for (int i = 0; i < visitedVertices.size(); i++) {
 			Vertex currentVertex = visitedVertices.get(i);
@@ -447,6 +449,29 @@ public final class Graph {
 					visitedVertices.add(v);
 				}
 			}
+
+			this.displayDijkstraStatusLine(distances, visitedVertices);
 		}
+	}
+
+
+	/**
+	 * Display the current state of distances from the source in the {@code applyDijkstra} method
+	 * @param distances Map associating each vertex to its optimal distance from the source
+	 * @param visitedVertices List of visited vertices
+	 */
+	private void displayDijkstraStatusLine(Map<Vertex, Double> distances, ArrayList<Vertex> visitedVertices) {
+			System.out.print("|");
+			for (Vertex v : this.vertices) {
+				if (distances.get(v) == Double.POSITIVE_INFINITY) {
+					System.out.print("  +inf.  |");
+				} else {
+					System.out.printf(" %7.0f |", distances.get(v));
+				}
+			}
+			for (Vertex visited : visitedVertices) {
+				System.out.printf("  %d ", visited.getId());
+			}
+			System.out.println();
 	}
 }
