@@ -6,7 +6,7 @@ import graph.exceptions.InvalidGraphFileException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class TestClass {
+public class GraphTheory {
 
 	public static void main(String[] args) {
 
