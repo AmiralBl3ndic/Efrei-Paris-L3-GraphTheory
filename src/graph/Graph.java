@@ -324,8 +324,9 @@ public final class Graph {
 		ArrayList<Vertex> modified = new ArrayList<>();
 		modified.add(startVertex);
 
-		for (int i = 0; i < MAX_ITERATIONS; i++) { // Loop at most n-1 times, then check for absorbent loops
+		for (int i = 0; i <= MAX_ITERATIONS; i++) { // Loop at most n times, then check for absorbent loops
 			ArrayList<Vertex> modifiedLast = new ArrayList<>(modified);
+			Map<Vertex, Double> lastDistances = new HashMap<>(distances);
 			modified.clear(); // Reset the modified vertices
 
 			// Explore all successors of all reached vertices
@@ -384,7 +385,13 @@ public final class Graph {
 				}
 			}
 			System.out.println();  // Linebreak
+
+			if (i == MAX_ITERATIONS && !distances.equals(lastDistances)) {
+				System.out.println();  // Linebreak
+				System.out.println("Absorbent cycle detected in this graph. The Bellman algorithm will not continue.");
+			}
 		}
+
 
 
 		return distances;
