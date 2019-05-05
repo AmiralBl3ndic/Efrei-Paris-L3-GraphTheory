@@ -310,6 +310,7 @@ public final class Graph {
 		}
 	}
 
+
 	/**
 	 * Apply the Bellman-Ford algorithm to the graph, starting with a passed in
 	 * source {@link Vertex}
@@ -385,7 +386,7 @@ public final class Graph {
 
 
 			// Display state of distances after operations made at this step
-			System.out.printf("%d) |  ", i+1);
+			System.out.printf("%3d) |  ", i+1);
 			for (Vertex v : this.vertices) {
 				if (distances.get(v) == Double.POSITIVE_INFINITY) {
 					System.out.print("+inf. | ");
