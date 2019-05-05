@@ -304,7 +304,7 @@ public final class Graph {
 	 * Apply the Bellman-Ford algorithm to the graph, starting with a passed in
 	 * source {@link Vertex}
 	 */
-	public Map<Vertex, Double> applyBellmanFord(Vertex startVertex) {
+	public void applyBellmanFord(Vertex startVertex) {
 		final double NULL_DISTANCE = 0.0; // #NoMagicNumbers
 		final int MAX_ITERATIONS = this.vertices.size() - 1;
 
@@ -391,10 +391,6 @@ public final class Graph {
 				System.out.println("Absorbent cycle detected in this graph. The Bellman algorithm will not continue.");
 			}
 		}
-
-
-
-		return distances;
 	}
 
 
