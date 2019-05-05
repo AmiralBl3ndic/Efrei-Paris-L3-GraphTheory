@@ -335,6 +335,8 @@ public final class Graph {
 		ArrayList<Vertex> modified = new ArrayList<>();
 		modified.add(startVertex);
 
+		this.displayBellmanFordStatusTableFirstLine(startVertex);
+
 		for (int i = 0; i <= MAX_ITERATIONS; i++) { // Loop at most n times, then check for absorbent loops
 			ArrayList<Vertex> modifiedLast = new ArrayList<>(modified);
 			Map<Vertex, Double> lastDistances = new HashMap<>(distances);
@@ -386,13 +388,13 @@ public final class Graph {
 
 
 			// Display state of distances after operations made at this step
-			System.out.printf("%3d) |  ", i+1);
+			System.out.printf("Step %3d) |  ", i+1);
 			for (Vertex v : this.vertices) {
 				if (distances.get(v) == Double.POSITIVE_INFINITY) {
-					System.out.print("+inf. | ");
+					System.out.print("  +inf.  | ");
 				} else {
 					Vertex reachingVertex = paths.get(v).size() <= 1 ? v : paths.get(v).get(paths.get(v).size() - 2);
-					System.out.printf("%.0f(%d)  | ", distances.get(v), reachingVertex.getId());
+					System.out.printf(" %3.0f(%d)  | ", distances.get(v), reachingVertex.getId());
 				}
 			}
 			System.out.println();  // Linebreak
@@ -402,6 +404,21 @@ public final class Graph {
 				System.out.println("Absorbent cycle detected in this graph. The Bellman algorithm will not continue.");
 			}
 		}
+	}
+
+
+	/**
+	 * Display the first line of the status table for the Bellman-Ford algorithm
+	 * @param sourceVertex {@link Vertex} to use as the source vertex
+	 */
+	private void displayBellmanFordStatusTableFirstLine(Vertex sourceVertex) {
+		System.out.println("Applying Bellman-Ford algorithm using " + sourceVertex.getId() + " as the source vertex");
+
+		System.out.print("Vertex id | ");
+		for (Vertex v : this.vertices) {
+			System.out.printf("   %3d    |", v.getId());
+		}
+		System.out.println();
 	}
 
 
