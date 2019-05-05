@@ -21,7 +21,7 @@ public class Dijkstra {
         if (g.hasNegativeEdge())
             System.out.println("We can't compute the Dijkstra's algorithm if there are negative edge !");
         else {
-            int sizeG = g.numberVertices;
+            int sizeG = g.getNbVertices();
             boolean vVisited[sizeG] = new boolean[];
             Arrays.fill(vVisited, false);
             computeShortestDistances(vVisited);

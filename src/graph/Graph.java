@@ -53,6 +53,10 @@ public final class Graph {
 		sc.close();
 	}
 
+	public int getNbVertices() {
+		return numberVertices;
+	}
+
 	/**
 	 * Add an edge to the graph, based on the {@link Scanner} on the building file
 	 * 
