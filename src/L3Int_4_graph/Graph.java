@@ -9,18 +9,18 @@ import java.io.FileReader;
 public final class Graph {
 
 	/**
-	 * Number of vertices that the L3Int_4_graph contains
+	 * Number of vertices that the graph contains
 	 */
 	private int numberVertices;
 
 	/**
-	 * Array of vertices that the L3Int_4_graph contains
+	 * Array of vertices that the graph contains
 	 */
 	private ArrayList<Vertex> vertices;
 
 
 	/**
-	 * Create a L3Int_4_graph based on its structure (contained in a text file)
+	 * Create a graph based on its structure (contained in a text file)
 	 * 
 	 * @param filePath Path to the file to open
 	 * @throws FileNotFoundException     If the passed file does not exist
@@ -33,7 +33,7 @@ public final class Graph {
 
 		Scanner sc = new Scanner(new FileReader(filePath)); // Scanner on the file, throw a FileNotFound exception if needed
 
-		// Attempt to read the first line (number of vertices in the L3Int_4_graph)
+		// Attempt to read the first line (number of vertices in the graph)
 		this.numberVertices = readNumberVertices(sc);
 
 		this.vertices = new ArrayList<>();
@@ -62,7 +62,7 @@ public final class Graph {
 
 
 	/**
-	 * Add an edge to the L3Int_4_graph, based on the {@link Scanner} on the building file
+	 * Add an edge to the graph, based on the {@link Scanner} on the building file
 	 * 
 	 * @param sc {@link Scanner} on the building file
 	 * @throws InvalidGraphFileException If a line does not have the right format
@@ -80,7 +80,7 @@ public final class Graph {
 						"A line describing an Edge is faulty (wrong parameters): unable to build a Graph based on that file");
 			}
 
-			// If no error has been thrown here, we can add the Edge to the L3Int_4_graph
+			// If no error has been thrown here, we can add the Edge to the graph
 			Edge edge = new Edge(this.vertices.get(from), this.vertices.get(to), weight); // Actually creating the Edge to add
 			this.vertices.get(from).addOutEdge(edge);
 			this.vertices.get(to).addInEdge(edge);
@@ -109,7 +109,7 @@ public final class Graph {
 
 
 	/**
-	 * Display the adjacency matrix of the current L3Int_4_graph
+	 * Display the adjacency matrix of the current graph
 	 */
 	public void displayAdjacencyMatrix() {
 
@@ -204,7 +204,7 @@ public final class Graph {
 	 *         weight
 	 */
 	public boolean hasNegativeEdge() {
-		// Check for all vertices of the L3Int_4_graph
+		// Check for all vertices of the graph
 		for (Vertex v : this.vertices) {
 			if (v.hasNegativeLink()) {
 				return true; // If the current Vertex contains an Edge with a negative weight
@@ -271,7 +271,7 @@ public final class Graph {
 	 * Read the first line of the passed file, check the value and act consequently
 	 * 
 	 * @param sc {@link Scanner} on the file to be read
-	 * @return Number of vertices in the L3Int_4_graph according to the file
+	 * @return Number of vertices in the graph according to the file
 	 * @throws InvalidGraphFileException If the file does not have the right format,
 	 *                                   structure or if data are not realistic
 	 *                                   (negative number of vertices)
@@ -284,7 +284,7 @@ public final class Graph {
 
 			// Check read value
 			if (numberOfVertices < MINIMUM_NUMBER_OF_VERTICES) {
-				throw new InvalidGraphFileException("A L3Int_4_graph must contain at least " + MINIMUM_NUMBER_OF_VERTICES
+				throw new InvalidGraphFileException("A graph must contain at least " + MINIMUM_NUMBER_OF_VERTICES
 						+ " vertices, but this file specifies " + numberOfVertices);
 			}
 
@@ -299,12 +299,12 @@ public final class Graph {
 
 
 	/**
-	 * Apply the Bellman-Ford algorithm to the L3Int_4_graph using the passed the {@link Vertex} with the passed {@code id} ({@code vertexId})
+	 * Apply the Bellman-Ford algorithm to the graph using the passed the {@link Vertex} with the passed {@code id} ({@code vertexId})
 	 * @param vertexId Id of the {@link Vertex} to use as the source
 	 */
 	public void applyBellmanFord(int vertexId) {
 		if (vertexId < 0 || vertexId >= this.vertices.size()) {
-			System.out.println("You cannot use this ID to start, as this vertex does not exist in this L3Int_4_graph");
+			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
 		} else {
 			applyBellmanFord(this.getVertex(vertexId));
 		}
@@ -312,7 +312,7 @@ public final class Graph {
 
 
 	/**
-	 * Apply the Bellman-Ford algorithm to the L3Int_4_graph, starting with a passed in
+	 * Apply the Bellman-Ford algorithm to the graph, starting with a passed in
 	 * source {@link Vertex}
 	 */
 	public void applyBellmanFord(Vertex startVertex) {
@@ -401,7 +401,7 @@ public final class Graph {
 
 			if (i == MAX_ITERATIONS && !distances.equals(lastDistances)) {
 				System.out.println();  // Linebreak
-				System.out.println("Absorbent cycle detected in this L3Int_4_graph. The Bellman algorithm will not continue.");
+				System.out.println("Absorbent cycle detected in this graph. The Bellman algorithm will not continue.");
 			}
 		}
 	}
@@ -430,12 +430,12 @@ public final class Graph {
 		boolean perform = true;
 
 		if (this.hasNegativeEdge()) {
-			System.out.println("You cannot perform Dijkstra's algorithm on this L3Int_4_graph as it contains a negative weighted edge");
+			System.out.println("You cannot perform Dijkstra's algorithm on this graph as it contains a negative weighted edge");
 			perform = false;
 		}
 
 		if (vertexId < 0 || vertexId >= this.vertices.size()) {
-			System.out.println("You cannot use this ID to start, as this vertex does not exist in this L3Int_4_graph");
+			System.out.println("You cannot use this ID to start, as this vertex does not exist in this graph");
 			perform = false;
 		}
 
