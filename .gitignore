@@ -1,3 +1,6 @@
+# Kotlin modules
+*.kotlin_module
+
 # Compiled class file
 *.class
 
