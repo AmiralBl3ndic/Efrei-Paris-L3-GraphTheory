@@ -1,0 +1,43 @@
+Enter the number of the graph file you wish to analyse :
+7
+
+=== VALUE MATRIX ===
+
+     ║    0 ║    1 ║    2 ║    3 ║    4 ║
+═════║══════║══════║══════║══════║══════║
+   0 ║      ║    1 ║    4 ║    8 ║   13 ║
+   1 ║      ║      ║    2 ║    6 ║   11 ║
+   2 ║      ║      ║      ║    3 ║    8 ║
+   3 ║      ║      ║      ║      ║    4 ║
+   4 ║  -11 ║      ║      ║      ║      ║
+
+
+=== ADJACENCY MATRIX ===
+
+   ║ 0 ║ 1 ║ 2 ║ 3 ║ 4 ║
+═══║═══║═══║═══║═══║═══║
+ 0 ║   ║ 1 ║ 1 ║ 1 ║ 1 ║
+ 1 ║   ║   ║ 1 ║ 1 ║ 1 ║
+ 2 ║   ║   ║   ║ 1 ║ 1 ║
+ 3 ║   ║   ║   ║   ║ 1 ║
+ 4 ║ 1 ║   ║   ║   ║   ║
+
+Enter the start vertex for the shortest paths calculation :
+0
+
+The graph has a negative edge, applying Bellman's algorithm.
+
+Applying Bellman-Ford algorithm using 0 as the source vertex
+Vertex id |      0    |     1    |     2    |     3    |     4    |
+Step   1) |     0(0)  |    1(0)  |    4(0)  |    8(0)  |   13(0)  |
+Step   2) |    -1(4)  |    1(0)  |    3(1)  |    6(2)  |   10(3)  |
+Step   3) |    -1(4)  |    0(0)  |    3(1)  |    6(2)  |   10(3)  |
+Step   4) |    -1(4)  |    0(0)  |    2(1)  |    6(2)  |   10(3)  |
+Step   5) |    -1(4)  |    0(0)  |    2(1)  |    5(2)  |   10(3)  |
+
+Absorbent cycle detected in this graph. The Bellman algorithm will not continue.
+
+Please enter 0 to quit and anything else to choose a new file :
+0
+
+Process finished with exit code 0
