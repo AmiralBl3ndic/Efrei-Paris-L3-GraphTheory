@@ -232,6 +232,7 @@ public final class Graph {
 
 
 	/**
+	 * TODO: Check speed compared to Bellman-Ford algorithm
 	 * Recursive method that checks whether or not there is an absorbent cycle
 	 * starting from the given Vertex
 	 * 
