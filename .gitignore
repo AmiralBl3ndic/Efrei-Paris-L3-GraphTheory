@@ -5,7 +5,7 @@
 *.class
 
 # Out files
-out
+out/
 
 # Log file
 *.log
