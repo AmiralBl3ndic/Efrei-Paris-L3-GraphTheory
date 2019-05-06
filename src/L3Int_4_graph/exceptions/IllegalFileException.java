@@ -1,4 +1,4 @@
-package graph.exceptions;
+package L3Int_4_graph.exceptions;
 
 /**
  * Exception to throw if a file is illegal in the given context

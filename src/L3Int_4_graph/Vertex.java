@@ -1,8 +1,8 @@
-package graph;
+package L3Int_4_graph;
 
 import java.util.ArrayList;
 
-import graph.exceptions.NotLinkedException;
+import L3Int_4_graph.exceptions.NotLinkedException;
 
 class Vertex {
 
@@ -37,7 +37,7 @@ class Vertex {
 
 	/**
 	 * Reset the class ids.
-	 * Use only when creating a new graph, or at the end of a graph creation.
+	 * Use only when creating a new L3Int_4_graph, or at the end of a L3Int_4_graph creation.
 	 */
 	static void resetIds () {
 		Vertex._number_vertices = 0;

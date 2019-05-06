@@ -1,4 +1,4 @@
-package graph;
+package L3Int_4_graph;
 
 /**
  * Represents a link between two vertices

@@ -1,7 +1,7 @@
-package tests;
+package L3Int_4_tests;
 
-import graph.*;
-import graph.exceptions.InvalidGraphFileException;
+import L3Int_4_graph.*;
+import L3Int_4_graph.exceptions.InvalidGraphFileException;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
